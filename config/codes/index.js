@@ -1,4 +1,4 @@
 module.exports = {
   errorCodes: require('./error.codes'),
-  goodCodes: require('./good.codes')
+  goodCodes: require('./success.codes')
 };

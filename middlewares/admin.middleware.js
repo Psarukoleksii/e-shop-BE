@@ -3,19 +3,18 @@ const { adminValidator } = require('../validators');
 
 module.exports = {
   isValidProduct: async (req, res, next) => {
-    try{
-      const product = req.body;
+    try {
+      const { error } = await adminValidator.products.createProductValidator.validate(req.body);
 
-      const { error } = await adminValidator.products.createProductValidator.validate(product);
-
-      if ( error ) {
+      if (error) {
+        // eslint-disable-next-line new-cap
         throw new errorHandler(codes.errorCodes.BAD_REQUEST, messages.errorMessages.PRODUCT_IS_NOT_VALID);
       }
 
-      req.product = product;
+      req.product = req.body;
       next();
     } catch (e) {
       next(e);
     }
   }
-}
+};

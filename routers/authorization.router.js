@@ -1,4 +1,5 @@
 const { Router } = require('express');
+
 const router = Router();
 
 const { authController } = require('../controllers');
@@ -22,6 +23,6 @@ router.post(
   '/profile',
   authMiddleware.checkAccessToken,
   authController.profile
-)
+);
 
 module.exports = router;

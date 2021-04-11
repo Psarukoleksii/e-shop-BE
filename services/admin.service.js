@@ -1,5 +1,15 @@
 const { productSchema } = require('../dataBase');
 
 module.exports = {
-  addProduct: (product) => productSchema.productSchema.create(product)
+  addProduct: async (product) => {
+    const category = await productSchema.productSchema.findOne({ category: product.category });
+    if (!category) {
+      const newCategory = await productSchema.productSchema.create(product);
+      newCategory.products.push(product.product);
+      newCategory.save();
+    } else {
+      category.products.push(product.product);
+      category.save();
+    }
+  }
 };

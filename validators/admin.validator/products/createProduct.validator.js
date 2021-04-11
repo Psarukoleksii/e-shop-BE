@@ -11,4 +11,4 @@ module.exports = Joi.object({
     counterInStorage: Joi.number().required(),
     counterOfPurchases: Joi.number().required(),
   })
-})
+});

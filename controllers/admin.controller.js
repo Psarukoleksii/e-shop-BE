@@ -3,14 +3,13 @@ const { messages, codes } = require('../config');
 
 module.exports = {
   addProductToDB: async (req, res, next) => {
-    try{
+    try {
       const { product } = req;
-
       await adminService.addProduct(product);
 
-      res.json(codes.goodCodes.OK, messages.goodMessages.PRODUCT_CREATED);
+      res.json(messages.goodMessages.PRODUCT_CREATED).status(codes.goodCodes.CREATED);
     } catch (e) {
-      next(e)
+      next(e);
     }
   }
 };
