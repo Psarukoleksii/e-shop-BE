@@ -10,7 +10,13 @@ module.exports = {
       next(e);
     }
   },
-
+  // getAllSubCategories: async (req, res, next) => {
+  //   try {
+  //     const response = req.body;
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // },
   getProductsWithSameCategory: async (req, res, next) => {
     try {
       const { name } = req.query;
