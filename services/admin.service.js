@@ -11,11 +11,10 @@ module.exports = {
       await subCat._products_id.push(product_id);
       await subCat.save();
       return subCat._id;
-    } else {
-      await findSubCategory._products_id.push(product_id);
-      await findSubCategory.save();
-      return findSubCategory._id;
     }
+    await findSubCategory._products_id.push(product_id);
+    await findSubCategory.save();
+    return findSubCategory._id;
   },
   createCategory: async (category, id) => {
     const findCategory = await productSchema.categorySchema.findOne(category);
@@ -24,10 +23,12 @@ module.exports = {
       await _category._subCategory_id.push(id);
       await _category.save();
       return;
-    } console.log(findCategory);
-    // else {
-    //   await findCategory._subCategory_id.push(id);
-    //   await findCategory.save();
-    // }
+    }
+    const findIdSubCategory = await findCategory._subCategory_id
+      .find((value) => value.toString() === id.toString());
+    if (!findIdSubCategory) {
+      await findCategory._subCategory_id.push(id);
+      await findCategory.save();
+    }
   }
 };
