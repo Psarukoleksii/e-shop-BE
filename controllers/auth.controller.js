@@ -38,12 +38,12 @@ module.exports = {
     try {
       const {
         user: {
-          firstName, lastName, phone, email, role
+          firstName, lastName, phone, email, role, _id
         }
       } = req;
 
       res.json({
-        firstName, lastName, phone, email, role
+        firstName, lastName, phone, email, role, _id
       });
     } catch (e) {
       next(e);

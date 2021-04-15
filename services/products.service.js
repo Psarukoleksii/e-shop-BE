@@ -92,5 +92,8 @@ module.exports = {
     {
       $replaceRoot: { newRoot: '$_id' }
     }
-  ])
+  ]),
+  getDetailsOfProduct: async (id) => productSchema.productSchema.find({ _id: `${id}` }),
+  addComment: async (user_id, product_id, comment) => productSchema.commentSchema.create({ user_id, product_id, comment }),
+  addRate: async (user_id, product_id, rate) => productSchema.rateSchema.create({ user_id, product_id, rate }),
 };
