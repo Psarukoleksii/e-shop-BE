@@ -12,8 +12,8 @@ module.exports = {
   },
   getProductsWithSameCategory: async (req, res, next) => {
     try {
-      const { name } = req.query;
-      const products = await productsService.getAllProductCategory(name);
+      const { name, skip } = req.query;
+      const products = await productsService.getAllProductCategory(name, +skip);
 
       res.json(products);
     } catch (e) {
@@ -31,8 +31,8 @@ module.exports = {
   },
   getProductsWithSameSubCategory: async (req, res, next) => {
     try {
-      const { subname } = req.query;
-      const products = await productsService.getProductsSubCategory(subname);
+      const { subname, skip } = req.query;
+      const products = await productsService.getProductsSubCategory(subname, +skip);
       res.json(products);
     } catch (e) {
       next(e);
@@ -56,12 +56,36 @@ module.exports = {
       next(e);
     }
   },
-  rateProduct: async (req, res, next) => {
+  addRateProduct: async (req, res, next) => {
     try {
       const { user_id, product_id, rate } = req.body;
-      console.log(user_id, product_id, rate);
       const rateProduct = await productsService.addRate(user_id, product_id, rate);
       res.json(rateProduct);
+    } catch (e) {
+      next(e);
+    }
+  },
+  getRateProduct: async (req, res, next) => {
+    try {
+      const { id } = req.query;
+      const rateProduct = await productsService.getRateOfProduct(id);
+      res.json(rateProduct);
+    } catch (e) {
+      next(e);
+    }
+  },
+  getProductsComments: async (req, res, next) => {
+    try {
+      const { id, skip } = req.query;
+      const commentsProduct = await productsService.getCommentsProduct(id, +skip);
+      res.json(commentsProduct);
+    } catch (e) {
+      next(e);
+    }
+  },
+  getNewProductsList: async (req, res, next) => {
+    try {
+
     } catch (e) {
       next(e);
     }
