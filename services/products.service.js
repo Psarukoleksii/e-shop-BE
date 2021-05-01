@@ -152,5 +152,11 @@ module.exports = {
     {
       $limit: 5
     }
-  ])
+  ]),
+  // eslint-disable-next-line require-await
+  getNewProducts: async (limit) => productSchema.productSchema.aggregate([{
+    $sort: { createdAt: -1 }
+  }, {
+    $limit: limit
+  }])
 };

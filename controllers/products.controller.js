@@ -83,9 +83,11 @@ module.exports = {
       next(e);
     }
   },
-  getNewProductsList: async (req, res, next) => {
+  getNewProducts: async (req, res, next) => {
     try {
-
+      const { limit } = req.query;
+      const products = await productsService.getNewProducts(+limit);
+      res.json(products);
     } catch (e) {
       next(e);
     }

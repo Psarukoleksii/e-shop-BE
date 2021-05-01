@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { authorizationService } = require('../services');
 const { authValidator } = require('../validators');
-const {
- codes, messages, errorHandler, constants,
-} = require('../config');
+const { codes, messages, errorHandler, constants } = require('../config');
 
 module.exports = {
   isValidUserRegister: async (req, res, next) => {
