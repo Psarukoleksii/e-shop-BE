@@ -8,4 +8,6 @@ module.exports = {
   PRODUCT_IS_NOT_VALID: 'Product is not valid!',
   NOT_VALID_RATE_PRODUCT: 'Not valid rate of product',
   USER_ID_IS_NOT_FOUND: 'User is not found',
+  COMMENT_IS_NOT_VALID: 'Comment is not valid',
+  BASKET_PRODUCTS_IS_NOT_VALID: 'Basket product(s) is not valid',
 };

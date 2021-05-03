@@ -3,7 +3,9 @@ const { Router } = require('express');
 const router = Router();
 
 const { productsController } = require('../controllers');
-const { authMiddleware, rateMiddleware, userMiddleware } = require('../middlewares');
+const {
+authMiddleware, rateMiddleware, userMiddleware, commentsMiddleware
+} = require('../middlewares');
 
 router.get('/categories', productsController.getAllCategories);
 router.get('/allProductsWithSameCategory', productsController.getProductsWithSameCategory);
@@ -17,6 +19,7 @@ router.get('/getNewProducts', productsController.getNewProducts);
 router.post(
   '/addComment',
   authMiddleware.checkAccessToken,
+  commentsMiddleware.commentsValidator,
   userMiddleware.isValidUserId,
   productsController.addComment
 );
