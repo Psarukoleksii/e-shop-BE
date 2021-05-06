@@ -8,7 +8,7 @@ const productSchema = new Schema({
   mass: { type: Number },
   weight: { type: String },
   counterInStorage: { type: Number },
-  counterOfPurchases: { type: Number },
+  counterOfPurchases: { type: Number, default: 0 },
 }, { timestamps: true });
 
 module.exports = model('Product', productSchema);

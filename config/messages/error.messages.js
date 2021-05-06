@@ -10,4 +10,5 @@ module.exports = {
   USER_ID_IS_NOT_FOUND: 'User is not found',
   COMMENT_IS_NOT_VALID: 'Comment is not valid',
   BASKET_PRODUCTS_IS_NOT_VALID: 'Basket product(s) is not valid',
+  NOT_ENOUGH_COUNT_IN_STORAGE: 'Not enough count in storage of product'
 };

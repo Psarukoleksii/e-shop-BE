@@ -109,14 +109,10 @@ module.exports = {
       $limit: 9
     }
   ]),
-  // eslint-disable-next-line require-await
-  getDetailsOfProduct: async (id) => productSchema.productSchema.find({ _id: `${id}` }),
-  // eslint-disable-next-line require-await
-  addComment: async (user_id, product_id, comment) => productSchema.commentSchema.create({ user_id, product_id, comment }),
-  // eslint-disable-next-line require-await
-  addRate: async (user_id, product_id, rate) => productSchema.rateSchema.create({ user_id, product_id, rate }),
-  // eslint-disable-next-line require-await
-  getRateOfProduct: async (id) => productSchema.rateSchema.aggregate([{
+  getDetailsOfProduct: (id) => productSchema.productSchema.find({ _id: `${id}` }),
+  addComment: (user_id, product_id, comment) => productSchema.commentSchema.create({ user_id, product_id, comment }),
+  addRate: (user_id, product_id, rate) => productSchema.rateSchema.create({ user_id, product_id, rate }),
+  getRateOfProduct: (id) => productSchema.rateSchema.aggregate([{
     $group: {
       _id: '$product_id',
       avg: { $avg: '$rate' }
@@ -126,8 +122,7 @@ module.exports = {
       _id: ObjectId(id)
     }
   }]),
-  // eslint-disable-next-line require-await
-  getCommentsProduct: async (id, skip) => productSchema.commentSchema.aggregate([
+  getCommentsProduct: (id, skip) => productSchema.commentSchema.aggregate([
     {
       $match: {
         product_id: ObjectId(id)
@@ -153,8 +148,7 @@ module.exports = {
       $limit: 5
     }
   ]),
-  // eslint-disable-next-line require-await
-  getNewProducts: async (limit) => productSchema.productSchema.aggregate([{
+  getNewProducts: (limit) => productSchema.productSchema.aggregate([{
     $sort: { createdAt: -1 }
   }, {
     $limit: limit
